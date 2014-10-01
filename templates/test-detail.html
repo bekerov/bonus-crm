@@ -1,0 +1,61 @@
+<div class="container">
+	<input type="text" class="form-control" ng-model="test.name">
+	<input type="text" class="form-control" ng-model="test.description">
+
+	<hr>
+	<div class="row">
+		<div class="col-md-6"><button class="form-control" ng:click="addQuestion()">Добавить вопрос</button></div>
+	</div>
+	
+	<hr>
+
+	<div style="margin-top:10px;" ng-repeat="question in test.questions">
+
+		<div ng-if="question.question_type == 'one'">
+			<div>
+				<select ng-model="question.question_type">
+					<option value="one">Один из списка</option>
+					<option value="many">Несколько из списка</option>
+					<option value="text">Текстовое поле</option>
+				</select>
+			</div>
+		    <div><input type="text" class="form-control" ng-model="question.name"></div>
+			<div><input type="text" class="form-control" ng-model="question.description"></div>
+
+			<div ng-repeat="option in question.options">
+				<div>{{option.name}}</div>
+			</div>
+
+			{{$index}}
+			
+		</div>
+
+		<div ng-if="question.question_type == 'many'">
+			<div>
+				<select ng-model="question.question_type">
+					<option value="one">Один из списка</option>
+					<option value="many">Несколько из списка</option>
+					<option value="text">Текстовое поле</option>
+				</select>
+			</div>
+		    {{$index}}
+		</div>
+
+		<div ng-if="question.question_type == 'text'">
+			<div>
+				<select ng-model="question.question_type">
+					<option value="one">Один из списка</option>
+					<option value="many">Несколько из списка</option>
+					<option value="text">Текстовое поле</option>
+				</select>
+			</div>
+		    <div><input type="text" class="form-control" ng-model="question.name"></div>
+			<div><input type="text" class="form-control" ng-model="question.description"></div>
+			{{$index}}
+		</div>
+		
+	</div>
+
+	<div><h5>Служебная информация</h5><code>{{test}}</code></div>
+
+</div>

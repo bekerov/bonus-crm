@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6"><h2>Список карт</h2></div>
+        <div class="col-md-6"><button type="button" class="btn btn-primary pull-right" ng-click="show=!show">Сгенерировать</button></div>
+    </div>
+
+    <div ng-show="show">
+        <form ng-submit="generate()">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="number" min="0001" max="9999" class="form-control" ng-model="generator.series" required placeholder="Серия 4 цифры"/>
+                </div>
+                <div class="col-md-4">
+                    <input type="number" max="100" class="form-control" ng-model="generator.quantity" required placeholder="Ведите количество необходимых карт"/>
+                </div>
+
+                <div class="col-md-4">
+                    <select ng-model="generator.duration" class="form-control">
+                        <option value="12" selected>1 год</option>
+                        <option value="6">6 мес.</option>
+                        <option value="1">1 мес.</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Генерация</button>
+        </form>
+        <!--{{generator}}-->
+    </div>
+
+    <div class="input-group search_input">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+        <input type="text" class="form-control" placeholder="Поиск" autofocus="autofocus" ng-model="searchQuery">
+    </div>
+	<table class="table table-bordered">
+		<tr>
+            <th>Серия карты</th>
+            <th>Номер карты</th>
+            <th>Дата выпуска</th>
+            <th>Дата окончания</th>
+            <th>Статус карты</th>
+        </tr>
+		<tr ng-repeat="card in cards | filter:searchQuery">
+            <td>{{card.series}}</td>
+			<td><a href="#/card/{{card.card_number}}">{{card.card_number}}</a></td>
+            <td>{{card.release_date}}</td>
+            <td>{{card.end_date}}</td>
+            <td>{{card.status}}</td>
+		</tr>
+	</table>
+
+
+
+	<!--<div><h5>Служебная информация</h5><code>{{cards}}</code></div>-->
+</div>
+

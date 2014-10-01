@@ -1,0 +1,16 @@
+<div class="container">
+	<h2>Список компаний</h2>
+	<a href="#/companies/new">Добавить</a>
+	<table class="table table-bordered">
+		<tr><th>Название</th><th></th></tr>
+		<tr ng-repeat="company in companies">
+			<td><a href="#/companies/{{company.guid}}">{{company.name}}</a></td>
+			<td class="text-center"><a href ng:click="removeCompany(company.guid, $index)"><span class="glyphicon glyphicon-remove"></span></a></td>
+		</tr>
+	</table>
+
+
+
+	<div><h5>Служебная информация</h5><code>{{companies}}</code></div>
+</div>
+

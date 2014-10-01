@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>Бонусная карта {{card.card_number}}</h3></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6" ng-click="updateStatus()" ng-show="card.status == 'deactivated'"><button type="button" class="btn btn-primary btn-lg btn-block">Активировать</button></div>
+                <div class="col-md-6" ng-click="updateStatus()" ng-show="card.status == 'activated'"><button type="button" class="btn btn-primary btn-lg btn-block">Деактивировать</button></div>
+                <div class="col-md-6" ng-click="delete()"><button type="button" class="btn btn-danger btn-lg btn-block">Удалить</button></div>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <td>Серия</td>
+                <td>{{card.series}}</td>
+            </tr>
+            <tr>
+                <td>Номер карты</td>
+                <td>{{card.card_number}}</td>
+            </tr>
+            <tr>
+                <td>Дата выпуска карты</td>
+                <td>{{card.release_date}}</td>
+            </tr>
+            <tr>
+                <td>Дата использования</td>
+                <td>{{card.used_date}}</td>
+            </tr>
+            <tr>
+                <td>Дата окончания</td>
+                <td>{{card.end_date}}</td>
+            </tr>
+            <tr>
+                <td>Сумма</td>
+                <td>{{card.sum}}</td>
+            </tr>
+            <tr>
+                <td>Статус</td>
+                <td>{{card.status}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">История</div>
+        <div class="panel-body">
+            <p ng-repeat="item in card_history">Дата {{item.date}} на сумму {{item.sum}} </p>
+        </div>
+    </div>
+</div>
